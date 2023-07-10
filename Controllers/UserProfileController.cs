@@ -22,7 +22,7 @@ namespace Streamish.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetById(int id)
         {
             var userProfile = _userProfileRepository.GetById(id);
             if (userProfile == null)
@@ -32,6 +32,17 @@ namespace Streamish.Controllers
             return Ok(userProfile);
         }
 
+        //get by id with videos
+        [HttpGet("GetByIdWithVideos/{id}")]
+        public IActionResult GetByIdWithVideos(int id)
+        {
+            var userProfile = _userProfileRepository.GetByIdWithVideos(id);
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
+            return Ok(userProfile);
+        }
         [HttpPost]
         public IActionResult Post(UserProfile userProfile)
         {

@@ -55,3 +55,12 @@ SELECT v.Id, v.Title, v.Description, v.Url, v.DateCreated, v.UserProfileId,
                        LEFT JOIN Comment c on c.VideoId = v.id
                     WHERE v.Id = 1
                      ORDER BY  v.DateCreated
+
+SELECT up.Id, up.Name, up.Email, up.ImageUrl, up.DateCreated,
+
+                            v.Id, v.Title, v.Description, v.Url, v.DateCreated
+                            
+                            FROM UserProfile up
+                            JOIN Video v ON up.Id = v.UserProfileId
+                            WHERE up.Id = 2
+                            ORDER BY v.DateCreated
