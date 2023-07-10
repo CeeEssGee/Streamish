@@ -180,7 +180,7 @@ namespace Streamish.Repositories
             }
         }
 
-        
+
         public List<Video> GetVideoByIdWithComments(int id)
         {
             using (var conn = Connection)
@@ -207,16 +207,16 @@ namespace Streamish.Repositories
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         var videos = new List<Video>();
-                            while(reader.Read())
-                            {
+                        while (reader.Read())
+                        {
                             //var videoId = DbUtils.GetInt(reader, "VideoId");
 
                             Video existingVideo = null;
                             if (existingVideo == null)
                             {
                                 existingVideo = new Video()
-                            
-                            {
+
+                                {
                                     Id = id,
                                     Title = DbUtils.GetString(reader, "Title"),
                                     Description = DbUtils.GetString(reader, "Description"),
@@ -248,7 +248,7 @@ namespace Streamish.Repositories
                                     UserProfileId = DbUtils.GetInt(reader, "CommentUserProfileId")
                                 });
                             }
-                                videos.Add(existingVideo);
+                            videos.Add(existingVideo);
                         }
 
                         return videos;
@@ -318,7 +318,7 @@ namespace Streamish.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM Video WHERE Id = @Id";
-                    DbUtils.AddParameter(cmd, "@id", id);
+                    DbUtils.AddParameter(cmd, "@Id", id);
                     cmd.ExecuteNonQuery();
                 }
             }
