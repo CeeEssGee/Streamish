@@ -22,7 +22,7 @@ namespace Streamish.Controllers
         }
 
         [HttpGet("GetWithComments")]
-        public IActionResult GetWithComments()
+        public IActionResult GetWithAllComments()
         {
             var videos = _videoRepository.GetAllWithComments();
             return Ok(videos);
@@ -39,7 +39,7 @@ namespace Streamish.Controllers
             return Ok(video);
         }
 
-        //Get video by id with comments - I don't know what to put for the IActionResult
+        //Get video by id with comments 
         [HttpGet("GetWithComments/{id}")]
         public IActionResult GetByIdWithComments(int id)
         {
@@ -75,6 +75,12 @@ namespace Streamish.Controllers
         {
             _videoRepository.Delete(id);
             return NoContent();
+        }
+
+        [HttpGet("search")]
+        public IActionResult Search(string q, bool sortDesc)
+        {
+            return Ok(_videoRepository.Search(q, sortDesc));
         }
     }
 }
