@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { addVideo } from "../modules/videoManager";
+import { useNavigate } from 'react-router-dom';
 
 const VideoForm = ({ getVideos }) => {
+    const navigate = useNavigate();
     const emptyVideo = {
         title: '',
         description: '',
@@ -24,9 +26,13 @@ const VideoForm = ({ getVideos }) => {
     const handleSave = (evt) => {
         evt.preventDefault();
 
-        addVideo(video).then(() => {
-            setVideo(emptyVideo);
-            getVideos();
+        // addVideo(video).then(() => {
+        //     setVideo(emptyVideo);
+        //     getVideos();
+        // });
+        addVideo(video).then((p) => {
+            // Navigate the user back to the home route
+            navigate("/");
         });
     };
 
