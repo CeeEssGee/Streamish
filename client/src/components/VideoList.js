@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Video from './Video';
-import { getAllVideos } from "../modules/videoManager";
+import { getAllVideos, searchVideos } from "../modules/videoManager";
 
 const VideoList = () => {
     const [videos, setVideos] = useState([]);
@@ -9,6 +9,12 @@ const VideoList = () => {
         getAllVideos().then(videos => setVideos(videos));
     };
 
+    const searchVids = (event) => {
+        let searchTerm = event.target.value;
+
+        searchVideos(searchTerm).then(video => setVideos(video));
+    }
+
     useEffect(() => {
         getVideos();
     }, []);
@@ -16,9 +22,14 @@ const VideoList = () => {
     return (
         <div className="container">
             <div className="row justify-content-center">
-                {videos.map((video) => (
-                    <Video video={video} key={video.id} />
-                ))}
+                <input type="" placeholder="Search Videos" onChange={searchVids} />
+                {
+                    videos.length > 0 ?
+                        videos?.map((video) => (
+                            <Video video={video} key={video.id} />
+                        ))
+                        : <h2>No Result Found</h2>
+                }
             </div>
         </div>
     );
