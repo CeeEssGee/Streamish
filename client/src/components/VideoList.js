@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Video from './Video';
 import { getAllVideos, searchVideos } from "../modules/videoManager";
+import VideoForm from "./VideoForm";
 
 const VideoList = () => {
     const [videos, setVideos] = useState([]);
@@ -21,6 +22,7 @@ const VideoList = () => {
 
     return (
         <div className="container">
+            <VideoForm getVideos={getVideos} />
             <div className="row justify-content-center">
                 <input type="" placeholder="Search Videos" onChange={searchVids} />
                 {
