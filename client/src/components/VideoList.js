@@ -1,3 +1,4 @@
+// parent of Video
 import React, { useEffect, useState } from "react";
 import Video from './Video';
 import { getAllVideos, searchVideos } from "../modules/videoManager";
@@ -28,7 +29,7 @@ const VideoList = () => {
                 {
                     videos.length > 0 ?
                         videos?.map((video) => (
-                            <Video video={video} key={video.id} />
+                            <Video video={video} key={video.id} userName={video.userProfile.name} />
                         ))
                         : <h2>No Result Found</h2>
                 }

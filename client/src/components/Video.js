@@ -2,10 +2,15 @@ import React from "react";
 import { Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const Video = ({ video }) => {
+const Video = ({ video, userName }) => {
     return (
         <Card >
-            <p className="text-left px-2">Posted by: {video.userProfile.name}</p>
+
+            <Link to={`/users/${video.userProfileId}`} >
+                Posted by: {userName}
+            </Link>
+
+
             <CardBody>
                 <iframe className="video"
                     src={video.url}
