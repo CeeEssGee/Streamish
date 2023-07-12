@@ -19,10 +19,15 @@ export const addVideo = (video) => {
 
 export const searchVideos = (searchTerm) => {
     return fetch(baseUrl + "/search?q=" + searchTerm + "&sortDesc=true")
-        .then((res) => res.json())
+        .then((res) => res.json());
 };
 
-// NOTE This assumes your API is set up to return a video object which includes an array of comments. If you need to make an additional fetch call to get the comments for a video, update the getVideo function as needed.
 export const getVideo = (id) => {
-    return fetch(`${getWithCommentsUrl}/${id}`).then((res) => res.json());
+    return fetch(`${getWithCommentsUrl}/${id}`)
+        .then((res) => res.json());
 };
+
+export const getUserVideos = (id) => {
+    return fetch(`/api/userProfile/GetByIdWithVideos/${id}`)
+        .then((res) => res.json());
+}
