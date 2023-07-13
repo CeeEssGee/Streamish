@@ -26,7 +26,7 @@ const Video = ({ video, userName }) => {
                 </Link>
                 <p>{video.description}</p>
                 {/* <h3>Comments</h3>
-                <ul>
+                <ul>                
                     {video.comments?.map(c =>
                     (
                         <li>{c.message}</li>

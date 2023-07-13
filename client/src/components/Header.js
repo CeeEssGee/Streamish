@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { logout } from "../modules/authManager";
 
-const Header = () => {
+
+const Header = ({ isLoggedIn }) => {
     return (
         <nav className="navbar navbar-expand navbar-dark bg-info">
             <Link to="/" className="navbar-brand">

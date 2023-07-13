@@ -23,7 +23,6 @@ const VideoList = () => {
 
     return (
         <div className="container">
-            {/* <VideoForm getVideos={getVideos} /> */}
             <div className="row justify-content-center">
                 <input type="" placeholder="Search Videos" onChange={searchVids} />
                 {

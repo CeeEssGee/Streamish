@@ -3,6 +3,12 @@ SELECT * FROM Favorite;
 SELECT * FROM Comment;
 SELECT * FROM UserProfile;
 
+
+-- Get by FirebaseUserId
+SELECT up.Id, Up.FirebaseUserId, up.Name AS UserProfileName, up.Email, up.ImageUrl, up.DateCreated
+                          FROM UserProfile up                               
+                         WHERE FirebaseUserId = '68Rrmk9EKEZaokymihp923XdLGh2'
+
 --Get all videos
 SELECT v.Id, v.Title, v.Description, v.Url, v.DateCreated, v.UserProfileId,
                       up.Name, up.Email, up.DateCreated AS UserProfileDateCreated,
